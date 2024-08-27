@@ -856,7 +856,8 @@ pub fn is_setup(name: &str) -> bool {
 }
 
 pub fn get_custom_rendezvous_server(custom: String) -> String {
-    #[cfg(windows)]
+    return config::PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
+    /*#[cfg(windows)]
     if let Ok(lic) = crate::platform::windows::get_license_from_exe_name() {
         if !lic.host.is_empty() {
             return lic.host.clone();
@@ -868,7 +869,7 @@ pub fn get_custom_rendezvous_server(custom: String) -> String {
     if !config::PROD_RENDEZVOUS_SERVER.read().unwrap().is_empty() {
         return config::PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
     }
-    "".to_owned()
+    "".to_owned()*/
 }
 
 pub fn get_api_server(api: String, custom: String) -> String {
@@ -1186,7 +1187,7 @@ pub fn check_process(arg: &str, mut same_uid: bool) -> bool {
 }
 
 pub async fn secure_tcp(conn: &mut FramedStream, key: &str) -> ResultType<()> {
-    let rs_pk = get_rs_pk(key);
+    let rs_pk = get_rs_pk(config::RS_PUB_KEY);
     let Some(rs_pk) = rs_pk else {
         bail!("Handshake failed: invalid public key from rendezvous server");
     };
@@ -1235,7 +1236,8 @@ fn get_pk(pk: &[u8]) -> Option<[u8; 32]> {
 
 #[inline]
 pub fn get_rs_pk(str_base64: &str) -> Option<sign::PublicKey> {
-    if let Ok(pk) = crate::decode64(str_base64) {
+    // fixed
+    if let Ok(pk) = crate::decode64(RS_PUB_KEY) {
         get_pk(&pk).map(|x| sign::PublicKey(x))
     } else {
         None
@@ -1417,7 +1419,7 @@ pub fn read_custom_client(config: &str) {
         log::error!("Failed to decode custom client config");
         return;
     };
-    const KEY: &str = "5Qbwsde3unUcJBtrx9ZkvUmwFNoExHzpryHuPUdqlWM=";
+    const KEY: &str = config::RS_PUB_KEY;
     let Some(pk) = get_rs_pk(KEY) else {
         log::error!("Failed to parse public key of custom client");
         return;
