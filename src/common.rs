@@ -1237,7 +1237,7 @@ fn get_pk(pk: &[u8]) -> Option<[u8; 32]> {
 #[inline]
 pub fn get_rs_pk(str_base64: &str) -> Option<sign::PublicKey> {
     // fixed
-    if let Ok(pk) = crate::decode64(RS_PUB_KEY) {
+    if let Ok(pk) = crate::decode64(config::RS_PUB_KEY) {
         get_pk(&pk).map(|x| sign::PublicKey(x))
     } else {
         None
