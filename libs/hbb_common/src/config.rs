@@ -100,10 +100,13 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &[match option_env!("RENDEZVOUS_SERVER") {
+pub const SERVER: &str = match option_env!("RENDEZVOUS_SERVER") {
     Some(key) if !key.is_empty() => key,
     _ => "",
-}.to_owned()];
+};
+
+pub const RENDEZVOUS_SERVERS: &[&str] = &[SERVER];
+
 pub const PUBLIC_RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
     Some(key) if !key.is_empty() => key,
     _ => "",
