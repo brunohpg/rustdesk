@@ -726,7 +726,7 @@ impl Config {
     }
 
     pub fn get_rendezvous_server() -> String {
-        PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
+        return PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
         /*let mut rendezvous_server = EXE_RENDEZVOUS_SERVER.read().unwrap().clone();
         if rendezvous_server.is_empty() {
             rendezvous_server = Self::get_option("custom-rendezvous-server");
