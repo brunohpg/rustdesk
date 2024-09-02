@@ -1286,9 +1286,9 @@ if exist \"{tmp_path}\\{app_name} Tray.lnk\" del /f /q \"{tmp_path}\\{app_name} 
 
     // potential bug here: if run_cmd cancelled, but config file is changed.
     if let Some(lic) = get_license() {
-        Config::set_option("key".into(), lic.key);
-        Config::set_option("custom-rendezvous-server".into(), lic.host);
-        Config::set_option("api-server".into(), lic.api);
+        Config::set_option("ex-key".into(), lic.key);
+        Config::set_option("ex-custom-rendezvous-server".into(), lic.host);
+        Config::set_option("ex-api-server".into(), lic.api);
     }
 
     let tray_shortcuts = if config::is_outgoing_only() {

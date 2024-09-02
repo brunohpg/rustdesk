@@ -358,13 +358,13 @@ pub fn core_main() -> Option<Vec<String>> {
                     };
                     if let Ok(lic) = crate::custom_server::get_custom_server_from_string(&name) {
                         if !lic.host.is_empty() {
-                            crate::ui_interface::set_option("key".into(), lic.key);
+                            crate::ui_interface::set_option("ex-key".into(), lic.key);
                             crate::ui_interface::set_option(
-                                "custom-rendezvous-server".into(),
+                                "ex-custom-rendezvous-server".into(),
                                 lic.host,
                             );
-                            crate::ui_interface::set_option("api-server".into(), lic.api);
-                            crate::ui_interface::set_option("relay-server".into(), lic.relay);
+                            crate::ui_interface::set_option("ex-api-server".into(), lic.api);
+                            crate::ui_interface::set_option("ex-relay-server".into(), lic.relay);
                         }
                     }
                 } else {

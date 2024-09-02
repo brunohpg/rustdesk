@@ -1000,13 +1000,13 @@ impl Connection {
 
     fn get_api_server(&mut self) {
         self.server_audit_conn = crate::get_audit_server(
-            Config::get_option("api-server"),
-            Config::get_option("custom-rendezvous-server"),
+            Config::get_option("ex-api-server"),
+            Config::get_option("ex-custom-rendezvous-server"),
             "conn".to_owned(),
         );
         self.server_audit_file = crate::get_audit_server(
-            Config::get_option("api-server"),
-            Config::get_option("custom-rendezvous-server"),
+            Config::get_option("ex-api-server"),
+            Config::get_option("ex-custom-rendezvous-server"),
             "file".to_owned(),
         );
     }
@@ -1063,8 +1063,8 @@ impl Connection {
 
     pub fn post_alarm_audit(typ: AlarmAuditType, info: Value) {
         let url = crate::get_audit_server(
-            Config::get_option("api-server"),
-            Config::get_option("custom-rendezvous-server"),
+            Config::get_option("ex-api-server"),
+            Config::get_option("ex-custom-rendezvous-server"),
             "alarm".to_owned(),
         );
         if url.is_empty() {

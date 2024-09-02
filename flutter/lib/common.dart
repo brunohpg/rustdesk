@@ -2586,10 +2586,10 @@ class ServerConfig {
 
   /// from local options
   ServerConfig.fromOptions(Map<String, dynamic> options)
-      : idServer = options['custom-rendezvous-server'] ?? "",
-        relayServer = options['relay-server'] ?? "",
-        apiServer = options['api-server'] ?? "",
-        key = options['key'] ?? "";
+      : idServer = options['ex-custom-rendezvous-server'] ?? "",
+        relayServer = options['ex-relay-server'] ?? "",
+        apiServer = options['ex-api-server'] ?? "",
+        key = options['ex-key'] ?? "";
 }
 
 Widget dialogButton(String text,
@@ -3223,10 +3223,10 @@ Future<bool> setServerConfig(
 
   // should set one by one
   await bind.mainSetOption(
-      key: 'custom-rendezvous-server', value: config.idServer);
-  await bind.mainSetOption(key: 'relay-server', value: config.relayServer);
-  await bind.mainSetOption(key: 'api-server', value: config.apiServer);
-  await bind.mainSetOption(key: 'key', value: config.key);
+      key: 'ex-custom-rendezvous-server', value: config.idServer);
+  await bind.mainSetOption(key: 'ex-relay-server', value: config.relayServer);
+  await bind.mainSetOption(key: 'ex-api-server', value: config.apiServer);
+  await bind.mainSetOption(key: 'ex-key', value: config.key);
   final newApiServer = await bind.mainGetApiServer();
   if (oldApiServer.isNotEmpty &&
       oldApiServer != newApiServer &&

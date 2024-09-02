@@ -729,7 +729,7 @@ impl Config {
         return PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
         /*let mut rendezvous_server = EXE_RENDEZVOUS_SERVER.read().unwrap().clone();
         if rendezvous_server.is_empty() {
-            rendezvous_server = Self::get_option("custom-rendezvous-server");
+            rendezvous_server = Self::get_option("ex-custom-rendezvous-server");
         }
         if rendezvous_server.is_empty() {
             rendezvous_server = PROD_RENDEZVOUS_SERVER.read().unwrap().clone();
@@ -756,7 +756,7 @@ impl Config {
         if !s.is_empty() {
             return vec![s];
         }
-        let s = Self::get_option("custom-rendezvous-server");
+        let s = Self::get_option("ex-custom-rendezvous-server");
         if !s.is_empty() {
             return vec![s];
         }
@@ -2206,9 +2206,9 @@ pub mod keys {
     pub const OPTION_ALLOW_LINUX_HEADLESS: &str = "allow-linux-headless";
     pub const OPTION_ENABLE_HWCODEC: &str = "enable-hwcodec";
     pub const OPTION_APPROVE_MODE: &str = "approve-mode";
-    pub const OPTION_CUSTOM_RENDEZVOUS_SERVER: &str = "custom-rendezvous-server";
-    pub const OPTION_API_SERVER: &str = "api-server";
-    pub const OPTION_KEY: &str = "key";
+    pub const OPTION_CUSTOM_RENDEZVOUS_SERVER: &str = "ex-custom-rendezvous-server";
+    pub const OPTION_API_SERVER: &str = "ex-api-server";
+    pub const OPTION_KEY: &str = "ex-key";
     pub const OPTION_PRESET_ADDRESS_BOOK_NAME: &str = "preset-address-book-name";
     pub const OPTION_PRESET_ADDRESS_BOOK_TAG: &str = "preset-address-book-tag";
     pub const OPTION_ENABLE_DIRECTX_CAPTURE: &str = "enable-directx-capture";

@@ -926,8 +926,8 @@ pub fn video_save_directory(root: bool) -> String {
 #[inline]
 pub fn get_api_server() -> String {
     crate::get_api_server(
-        get_option("api-server"),
-        get_option("custom-rendezvous-server"),
+        get_option("ex-api-server"),
+        get_option("ex-custom-rendezvous-server"),
     )
 }
 

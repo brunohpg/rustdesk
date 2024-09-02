@@ -1385,10 +1385,10 @@ class _NetworkState extends State<_Network> with AutomaticKeepAliveClientMixin {
       RxString relayErrMsg = ''.obs;
       RxString apiErrMsg = ''.obs;
       var idController =
-          TextEditingController(text: old('custom-rendezvous-server'));
-      var relayController = TextEditingController(text: old('relay-server'));
-      var apiController = TextEditingController(text: old('api-server'));
-      var keyController = TextEditingController(text: old('key'));
+          TextEditingController(text: old('ex-custom-rendezvous-server'));
+      var relayController = TextEditingController(text: old('ex-relay-server'));
+      var apiController = TextEditingController(text: old('ex-api-server'));
+      var keyController = TextEditingController(text: old('ex-key'));
       final controllers = [
         idController,
         relayController,

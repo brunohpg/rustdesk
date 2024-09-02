@@ -425,10 +425,10 @@ class MyIdMenu: Reactor.Component {
             }, 300);
         } else if (me.id == "custom-server") {
             var configOptions = handler.get_options();
-            var old_relay = configOptions["relay-server"] || "";
-            var old_api = configOptions["api-server"] || "";
-            var old_id = configOptions["custom-rendezvous-server"] || "";
-            var old_key = configOptions["key"] || "";
+            var old_relay = configOptions["ex-relay-server"] || "";
+            var old_api = configOptions["ex-api-server"] || "";
+            var old_id = configOptions["ex-custom-rendezvous-server"] || "";
+            var old_key = configOptions["ex-key"] || "";
             msgbox("custom-server", "ID/Relay Server", "<div .form .set-password> \
             <div><span>" + translate("ID Server") + ": </span><input|text .outline-focus name='id' value='" + old_id + "' /></div> \
             <div><span>" + translate("Relay Server") + ": </span><input|text name='relay' value='" + old_relay + "' /></div> \
@@ -455,10 +455,10 @@ class MyIdMenu: Reactor.Component {
                         return  translate("API Server") + ": " + translate("invalid_http");
                     }
                 }
-                configOptions["custom-rendezvous-server"] = id;
-                configOptions["relay-server"] = relay;
-                configOptions["api-server"] = api;
-                configOptions["key"] = key;
+                configOptions["ex-custom-rendezvous-server"] = id;
+                configOptions["ex-relay-server"] = relay;
+                configOptions["ex-api-server"] = api;
+                configOptions["ex-key"] = key;
                 handler.set_options(configOptions);
             }, 260);
         } else if (me.id == "socks5-server") {

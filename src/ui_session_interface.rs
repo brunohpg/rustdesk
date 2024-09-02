@@ -501,8 +501,8 @@ impl<T: InvokeUiSession> Session<T> {
             return "".to_owned();
         }
         crate::get_audit_server(
-            Config::get_option("api-server"),
-            Config::get_option("custom-rendezvous-server"),
+            Config::get_option("ex-api-server"),
+            Config::get_option("ex-custom-rendezvous-server"),
             typ,
         )
     }

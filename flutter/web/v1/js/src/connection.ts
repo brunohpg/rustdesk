@@ -90,7 +90,7 @@ export default class Connection {
     const nat_type = rendezvous.NatType.SYMMETRIC;
     const punch_hole_request = rendezvous.PunchHoleRequest.fromPartial({
       id,
-      licence_key: localStorage.getItem("key") || undefined,
+      licence_key: localStorage.getItem("ex-key") || undefined,
       conn_type,
       nat_type,
       token: localStorage.getItem("access_token") || undefined,
@@ -146,7 +146,7 @@ export default class Connection {
     console.log(new Date() + ": Connected to relay server");
     this._ws = ws;
     const request_relay = rendezvous.RequestRelay.fromPartial({
-      licence_key: localStorage.getItem("key") || undefined,
+      licence_key: localStorage.getItem("ex-key") || undefined,
       uuid,
     });
     ws.sendRendezvous({ request_relay });
@@ -159,7 +159,7 @@ export default class Connection {
     if (pk) {
       const RS_PK = "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=";
       try {
-        pk = await globals.verify(pk, localStorage.getItem("key") || RS_PK);
+        pk = await globals.verify(pk, localStorage.getItem("ex-key") || RS_PK);
         if (pk) {
           const idpk = message.IdPk.decode(pk);
           if (idpk.id == this._id) {
@@ -742,7 +742,7 @@ function testDelay() {
 testDelay();
 
 function getDefaultUri(isRelay: Boolean = false): string {
-  const host = localStorage.getItem("custom-rendezvous-server");
+  const host = localStorage.getItem("ex-custom-rendezvous-server");
   return getrUriFromRs(host || HOST, isRelay);
 }
 
